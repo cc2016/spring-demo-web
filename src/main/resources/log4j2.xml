@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+    <appenders>
+        <RandomAccessFile name="APILogrFile" fileName="/data/logs/artisans-web/app.log">
+            <PatternLayout>
+                <pattern>%-5p %d{MM-dd HH:mm:ss.SSS} [%c:%-3L] %m%n</pattern>
+            </PatternLayout>
+        </RandomAccessFile>
+        <RandomAccessFile name="ErrorFile" fileName="/data/logs/artisans-web/error.log">
+            <PatternLayout>
+                <pattern>%-5p %d{MM-dd HH:mm:ss.SSS} [%c:%-3L] %m%n</pattern>
+            </PatternLayout>
+        </RandomAccessFile>
+        <RandomAccessFile name="TimeMonitorFile" fileName="/data/logs/artisans-web/timemonitor.log">
+            <PatternLayout>
+                <pattern>%-5p %d{MM-dd HH:mm:ss.SSS} [%c:%-3L] %m%n</pattern>
+            </PatternLayout>
+        </RandomAccessFile>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <pattern>%-5p %d{MM-dd HH:mm:ss.SSS} [%c:%-3L] %m%n</pattern>
+            </PatternLayout>
+        </Console>
+        <Console name="ConsoleError" target="SYSTEM_ERR">
+            <PatternLayout>
+                <pattern>%-5p %d{MM-dd HH:mm:ss.SSS} [%c:%-3L] %m%n</pattern>
+            </PatternLayout>
+        </Console>
+    </appenders>
+
+    <loggers>
+        <root level="DEBUG">
+            <appender-ref ref="APILogrFile"/>
+            <appender-ref ref="Console"/>
+        </root>
+        <logger name="error" level="error" additivity="false">
+            <appender-ref ref="ErrorFile"/>
+            <appender-ref ref="ConsoleError"/>
+        </logger>
+        <logger name="timemonitor" level="INFO" additivity="false">
+            <appender-ref ref="TimeMonitorFile"/>
+        </logger>
+    </loggers>
+</configuration>
